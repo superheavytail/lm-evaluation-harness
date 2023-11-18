@@ -1,0 +1,20 @@
+group:
+  - multiple_choice
+task: kobest_boolq
+dataset_path: skt/kobest_v1
+dataset_name: boolq
+output_type: multiple_choice
+training_split: train
+validation_split: validation
+test_split: test
+process_docs: !function utils.process_docs
+doc_to_text: "{{paragraph}}\n다음 글의 참/거짓 여부를 판단하세요.\n{{question}}"
+doc_to_target: "{{gold}}"
+doc_to_choice: ["거짓","참"]
+metric_list:
+  - metric: acc
+    aggregation: mean
+    higher_is_better: true
+  - metric: acc_norm
+    aggregation: mean
+    higher_is_better: true
