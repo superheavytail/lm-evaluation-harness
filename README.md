@@ -1,5 +1,12 @@
 # Language Model Evaluation Harness
 
+## 한국어 벤치마크 태스크 추가
+추가된 데이터셋 목록
+- kobest_hellaswag (HF datasets: skt/kobest_v1)
+
+아래는 upstream repository의 원본 readme.md입니다.
+---
+  
 ## Overview
 
 This project provides a unified framework to test generative language models on a large number of different evaluation tasks.
