@@ -2,7 +2,9 @@
 
 `lm-evaluation-harness` is a framework that strives to support a wide range of zero- and few-shot evaluation tasks on autoregressive language models (LMs).
 
-This documentation page provides a walkthrough to get started creating your own task, on the `big-refactor` branch of the repository (which will be v0.5.0 in the future.)
+This documentation page provides a walkthrough to get started creating your own task, on the `big-refactor` branch of the repository (which will be v0.4.0 in the future.)
+
+A more interactive tutorial is available as a Jupyter notebook [here](https://github.com/EleutherAI/lm-evaluation-harness/blob/big-refactor/examples/lm-eval-overview.ipynb).
 
 ## Setup
 
@@ -272,6 +274,24 @@ to the top of any Python file that is run or imported when performing evaluation
 
 Passing `--tasks /path/to/yaml/file` is also accepted.
 
+
+## Beautifying Table Display
+
+To avoid conflict, each task needs to be registered with a unique name. Because of this, slight variations of task are still counted as unique tasks and need to be named uniquely. This could be done by appending an additional naming that may refer to the variation such as in MMLU where the template used to evaluated for flan are differentiated from the default by the prefix `mmlu_flan_*`. Printing the full task names can easily clutter the results table at the end of the evaluation especially when you have a long list of tasks or are using a benchmark that comprises of many tasks. To make it more legible, you can use `task_alias` and `group_alias` to provide an alternative task name and group name that will be printed.
+``
+for example in `mmlu_abstract_algebra.yaml` we set `group_alias` to `stem` and `task_alias` to `abstract_algebra`.
+
+```
+"dataset_name": "abstract_algebra"
+"description": "The following are multiple choice questions (with answers) about abstract\
+  \ algebra.\n\n"
+"group": "mmlu_stem"
+"group_alias": "stem"
+"include": "_default_template_yaml"
+"task": "mmlu_abstract_algebra"
+"task_alias": "abstract_algebra"
+```
+Note: Even though `group` can be a list, for now, `group_alias` can only be a single string.
 
 ## Checking validity
 
