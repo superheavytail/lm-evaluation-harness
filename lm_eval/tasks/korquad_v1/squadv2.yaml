@@ -1,0 +1,2 @@
+task: korquad_v1
+class: !function task.KorQuADv1
